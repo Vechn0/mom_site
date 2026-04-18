@@ -1,0 +1,288 @@
+{% extends "base.html" %}
+
+{% block title %}Об учителе{% endblock %}
+
+{% block content %}
+
+<style>
+    /* Делаем main чёрной доской */
+    main.container {
+        max-width: 100% !important;
+        background-color: #0a0c10 !important;
+        background-image: 
+            linear-gradient(rgba(255,255,240,0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,240,0.03) 1px, transparent 1px);
+        background-size: 40px 40px;
+        margin: 0 !important;
+        padding: 2rem 2rem !important;
+        color: #f0ebd8;
+        font-family: 'Neucha', cursive;
+        box-shadow: inset 0 0 80px rgba(0,0,0,0.8);
+    }
+    
+    /* Убираем отступы у container */
+    .container.my-5 {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        padding-top: 1rem !important;
+        padding-bottom: 2rem !important;
+    }
+    
+    /* Меловой текст */
+    .chalk-text {
+        color: #f0ebd8;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+        letter-spacing: 0.5px;
+    }
+    
+    /* Белые карточки — листочки на доске */
+    .note-card {
+        background: #fffef5;
+        color: #2c3e2f;
+        border-radius: 12px;
+        padding: 1.2rem;
+        box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        border-left: 6px solid #e8b45e;
+        font-family: 'Segoe UI', 'Roboto', sans-serif;
+        transition: transform 0.2s ease;
+    }
+    
+    .note-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+    }
+    
+    /* Заголовки мелом */
+    .chalk-title {
+        font-size: 2.2rem;
+        border-bottom: 2px dashed #f0ebd8;
+        display: inline-block;
+        padding-bottom: 6px;
+        margin-bottom: 20px;
+        color: #fff8e7;
+        font-weight: normal;
+    }
+    
+    /* Список на доске */
+    .chalk-list {
+        list-style: none;
+        padding-left: 0;
+    }
+    
+    .chalk-list li {
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(240,235,216,0.15);
+        font-size: 1.1rem;
+    }
+    
+    .chalk-list li:last-child {
+        border-bottom: none;
+    }
+    
+    /* Иконки на доске */
+    .icon-badge {
+        background: rgba(240,235,216,0.1);
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3.5rem;
+        margin: 0 auto;
+        box-shadow: 0 0 0 1px rgba(240,235,216,0.2);
+    }
+    
+    /* Цитата мелом */
+    .quote-chalk {
+        background: rgba(0,0,0,0.45);
+        border-left: 4px solid #f0ebd8;
+        padding: 1rem 1.5rem;
+        font-style: italic;
+        font-size: 1.1rem;
+        border-radius: 0 12px 12px 0;
+    }
+    
+    /* Меловые ссылки */
+    .chalk-link {
+        color: #ffecb3;
+        text-decoration: none;
+        border-bottom: 1px dotted #ffecb3;
+    }
+    
+    .chalk-link:hover {
+        color: #fff5e0;
+    }
+    
+    /* Кнопки в стиле мела */
+    .btn-chalk {
+        background: rgba(240,235,216,0.08);
+        border: 1px solid #f0ebd8;
+        color: #f0ebd8;
+        font-family: 'Neucha', cursive;
+        font-size: 1.1rem;
+        padding: 0.6rem 1.8rem;
+        transition: all 0.2s;
+    }
+    
+    .btn-chalk:hover {
+        background: #f0ebd8;
+        color: #0a0c10;
+        border-color: #f0ebd8;
+        transform: scale(1.02);
+    }
+    
+    .btn-light-chalk {
+        background: #fff8e7;
+        color: #0a0c10;
+        font-family: 'Neucha', cursive;
+        font-size: 1.1rem;
+        padding: 0.6rem 1.8rem;
+        transition: all 0.2s;
+    }
+    
+    .btn-light-chalk:hover {
+        background: #ffffff;
+        transform: scale(1.02);
+    }
+    
+    /* Блоки на доске */
+    .board-section {
+        margin-bottom: 2rem;
+    }
+</style>
+
+<div class="container-fluid chalk-text px-3">
+    
+    <!-- Шапка учителя -->
+    <div class="row align-items-center mb-5 board-section">
+        <div class="col-md-3 text-center">
+            <div class="icon-badge">
+                🍎
+            </div>
+        </div>
+        <div class="col-md-9 text-center text-md-start">
+            <h1 class="chalk-title">Федосеева Елена Андреевна</h1>
+            <p class="lead mb-2">👩‍🏫 Учитель начальных классов</p>
+            <p>🏫 Первая квалификационная категория | 📚 Педагогический стаж 12 лет</p>
+        </div>
+    </div>
+    
+    <!-- Образование и достижения -->
+    <div class="row g-4 mb-5 board-section">
+        <div class="col-md-6">
+            <h2 class="chalk-title" style="font-size: 1.6rem;">📖 Образование</h2>
+            <div class="note-card">
+                <ul class="chalk-list" style="color: #2c3e2f;">
+                    <li>🎓 <strong>Московский педагогический колледж №5</strong> (2010-2014)</li>
+                    <li>📜 <strong>МПГУ</strong> — «Педагогика и методика начального образования» (2018)</li>
+                    <li>⭐ Курсы повышения квалификации: «Современные технологии в начальной школе» (2023)</li>
+                    <li>🌱 «Психология младшего школьника» — дополнительная специализация</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <h2 class="chalk-title" style="font-size: 1.6rem;">🏆 Достижения и награды</h2>
+            <div class="note-card">
+                <ul class="chalk-list" style="color: #2c3e2f;">
+                    <li>🏅 Почётная грамота Министерства просвещения РФ (2022)</li>
+                    <li>⭐ Победитель конкурса «Лучший классный руководитель» (2023)</li>
+                    <li>📚 Автор методических разработок для 1-4 классов</li>
+                    <li>🎯 100% успеваемость учеников на протяжении 5 лет</li>
+                    <li>🌟 Подготовила 8 призёров городских олимпиад</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- О себе (полная ширина) -->
+    <div class="row mb-5 board-section">
+        <div class="col-12">
+            <h2 class="chalk-title" style="font-size: 1.6rem;">📝 О себе</h2>
+            <div class="quote-chalk mb-3">
+                «Чтобы быть хорошим учителем, нужно любить то, что преподаёшь, и любить тех, кому преподаёшь»
+            </div>
+            <p>Здравствуйте, мои дорогие ученики и уважаемые родители!</p>
+            <p>Меня зовут Елена Андреевна, я учитель начальных классов. Каждый день я прихожу в школу с улыбкой, потому что обожаю свою работу и своих учеников. Для меня важно не просто научить детей читать, писать и считать, а помочь им полюбить учёбу, поверить в свои силы и с радостью бежать в школу каждое утро.</p>
+            <p>На моих уроках всегда царит добрая и тёплая атмосфера. Я использую игровые методики, интерактивные задания и индивидуальный подход — ведь каждый ребёнок уникален и талантлив по-своему.</p>
+            <p class="mt-3">✨ <strong>Мой девиз:</strong> «Учиться должно быть интересно! Каждый день — маленькое открытие».</p>
+        </div>
+    </div>
+    
+    <!-- Что найдёте на сайте (карточки) -->
+    <div class="row mb-5 board-section">
+        <div class="col-12">
+            <h2 class="chalk-title" style="font-size: 1.6rem;">📚 На сайте для вас</h2>
+            <div class="row g-3 mt-2">
+                <div class="col-md-3 col-sm-6">
+                    <div class="note-card text-center">
+                        <div style="font-size: 2rem;">📖</div>
+                        <strong>Уроки</strong>
+                        <small class="d-block">конспекты и презентации</small>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="note-card text-center">
+                        <div style="font-size: 2rem;">🎮</div>
+                        <strong>Игры</strong>
+                        <small class="d-block">обучающие и развивающие</small>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="note-card text-center">
+                        <div style="font-size: 2rem;">📝</div>
+                        <strong>Задания</strong>
+                        <small class="d-block">для самостоятельной работы</small>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="note-card text-center">
+                        <div style="font-size: 2rem;">🎨</div>
+                        <strong>Творчество</strong>
+                        <small class="d-block">поделки и проекты</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Контакты (просто и понятно) -->
+    <div class="row mb-4 board-section">
+        <div class="col-12">
+            <h2 class="chalk-title" style="font-size: 1.6rem;">📞 Связаться со мной</h2>
+            <div class="row g-3 mt-2">
+                <div class="col-md-4">
+                    <div class="note-card text-center">
+                        <div style="font-size: 1.8rem;">✉️</div>
+                        <strong>Email</strong>
+                        <small>fea3182@mail.com</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="note-card text-center">
+                        <div style="font-size: 1.8rem;">💬</div>
+                        <strong>Telegram</strong>
+                        <small>@elena_teacher</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="note-card text-center">
+                        <div style="font-size: 1.8rem;">🏫</div>
+                        <strong>Школа №</strong>
+                        <small>кабинет 205</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Кнопки действий -->
+    <div class="text-center mt-4 pt-3">
+        <a href="#" class="btn btn-chalk btn-lg mx-2">📚 Материалы уроков</a>
+        <a href="#" class="btn btn-light-chalk btn-lg mx-2">✏️ Задать вопрос</a>
+    </div>
+    
+</div>
+
+{% endblock %}
