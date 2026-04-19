@@ -156,17 +156,19 @@
     
     <!-- Шапка учителя -->
     <div class="row align-items-center mb-5 board-section">
-        <div class="col-md-3 text-center">
-            <div class="icon-badge">
-                🍎
-            </div>
-        </div>
-        <div class="col-md-9 text-center text-md-start">
-            <h1 class="chalk-title">Федосеева Елена Андреевна</h1>
-            <p class="lead mb-2">👩‍🏫 Учитель начальных классов</p>
-            <p>🏫 Первая квалификационная категория | 📚 Педагогический стаж 12 лет</p>
+    <div class="col-md-3 text-center">
+        <div style="text-align: center;">
+            <img src="{{ url_for('static', filename='images/avatar.jpeg') }}" 
+     alt="Елена Андреевна Федосеева"
+     style="width: 250px; height: 250px; border-radius: 50%; object-fit: cover; object-position: 50% 30%; border: 3px solid #f0ebd8; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
         </div>
     </div>
+    <div class="col-md-9 text-center text-md-start">
+        <h1 class="chalk-title">Федосеева Елена Андреевна</h1>
+        <p class="lead mb-2">👩‍🏫 Учитель начальных классов</p>
+        <p>🏫 Первая квалификационная категория | 📚 Педагогический стаж 12 лет</p>
+    </div>
+</div>
     
     <!-- Образование и достижения -->
     <div class="row g-4 mb-5 board-section">
