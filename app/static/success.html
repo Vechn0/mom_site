@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+
+{% block title %}Регистрация успешна!{% endblock %}
+
+{% block content %}
+
+<style>
+    /* Делаем main чёрной доской */
+    main.container {
+        max-width: 100% !important;
+        background-color: #0a0c10 !important;
+        background-image: 
+            linear-gradient(rgba(255,255,240,0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,240,0.03) 1px, transparent 1px);
+        background-size: 40px 40px;
+        margin: 0 !important;
+        padding: 2rem 2rem !important;
+        color: #f0ebd8;
+        font-family: 'Neucha', cursive;
+        box-shadow: inset 0 0 80px rgba(0,0,0,0.8);
+    }
+    
+    .container.my-5 {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        padding-top: 1rem !important;
+        padding-bottom: 2rem !important;
+    }
+    
+    .success-card {
+        background: rgba(255,255,240,0.08);
+        border: 1px solid rgba(255,255,240,0.2);
+        border-radius: 24px;
+        padding: 2.5rem;
+        text-align: center;
+        max-width: 500px;
+        margin: 0 auto;
+        backdrop-filter: blur(5px);
+    }
+    
+    .checkmark {
+        font-size: 5rem;
+        background: #2e7d5e;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem auto;
+        animation: scaleIn 0.5s ease;
+    }
+    
+    @keyframes scaleIn {
+        0% {
+            transform: scale(0);
+            opacity: 0;
+        }
+        80% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+    
+    .success-title {
+        font-size: 2rem;
+        color: #f0ebd8;
+        margin-bottom: 1rem;
+        border-bottom: 2px dashed #f0ebd8;
+        display: inline-block;
+        padding-bottom: 8px;
+    }
+    
+    .success-message {
+        font-size: 1.1rem;
+        margin: 1.5rem 0;
+        color: #e0dbc8;
+    }
+    
+    .user-info {
+        background: rgba(255,255,240,0.12);
+        border-radius: 16px;
+        padding: 1rem;
+        margin: 1.5rem 0;
+        text-align: left;
+    }
+    
+    .user-info p {
+        margin: 0.5rem 0;
+    }
+    
+    .btn-group {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 1.5rem;
+        flex-wrap: wrap;
+    }
+    
+    .btn-success-chalk {
+        background: #2e7d5e;
+        border: none;
+        color: white;
+        font-family: 'Neucha', cursive;
+        font-size: 1.1rem;
+        padding: 0.6rem 1.8rem;
+        transition: all 0.2s;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 8px;
+    }
+    
+    .btn-success-chalk:hover {
+        background: #3a9a74;
+        transform: scale(1.02);
+        color: white;
+    }
+    
+    .btn-outline-chalk {
+        background: transparent;
+        border: 1px solid #f0ebd8;
+        color: #f0ebd8;
+        font-family: 'Neucha', cursive;
+        font-size: 1.1rem;
+        padding: 0.6rem 1.8rem;
+        transition: all 0.2s;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 8px;
+    }
+    
+    .btn-outline-chalk:hover {
+        background: rgba(240,235,216,0.1);
+        transform: scale(1.02);
+        color: white;
+    }
+</style>
+
+<div class="container-fluid chalk-text px-3">
+    <div class="success-card">
+        <div class="checkmark">
+            ✅
+        </div>
+        
+        <h1 class="success-title">Регистрация успешна!</h1>
+        
+        <div class="success-message">
+            <p>🎉 Добро пожаловать, дорогой ученик!</p>
+            <p>Твой аккаунт успешно создан.</p>
+        </div>
+        
+        <div class="user-info">
+            <p><strong>👤 Имя пользователя:</strong> {{ username }}</p>
+            <p><strong>📧 Email:</strong> {{ email }}</p>
+            <p><strong>📅 Дата регистрации:</strong> {{ date }}</p>
+        </div>
+        
+        <div class="btn-group">
+            <a href="{{ url_for('auth.login') }}" class="btn-success-chalk">
+                🔐 Войти в аккаунт
+            </a>
+            <a href="{{ url_for('main.home') }}" class="btn-outline-chalk">
+                🏠 На главную
+            </a>
+        </div>
+        
+        
+    </div>
+</div>
+
+{% endblock %}
