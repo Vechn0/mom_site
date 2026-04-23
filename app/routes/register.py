@@ -1,29 +1,37 @@
-from flask import Blueprint,render_template
+from flask import Blueprint,render_template,redirect,url_for
 from flask import request,flash
 from app.models import User
 from app.forms import RegistersForm, LoginsForm
 from app.extensions import db
+from flask_login import login_user, logout_user, login_required, current_user
 bp = Blueprint("auth",__name__)
 
 
 
 @bp.route("/",methods=["GET","POST"])
-def login():
-    form = LoginsForm()
-    if request.method == "POST":
-        
-        if form.validate_on_submit():
-            username = form.username.data
-            password = form.password.data
-            user = User.query.filter_by(username=username).first()
-            if user and user.check_password(password):
-                pass
-                #доделать логированных пользователей
-            else:
-                flash("Неверный логин или пароль","danger")
+def login_or_profile():
+    if current_user.is_authenticated:
+        return redirect(url_for("main.profile"))
     else:
+        form = LoginsForm()
+        if request.method == "POST":
+            
+            if form.validate_on_submit():
+                username = form.username.data
+                password = form.password.data
+                user = User.query.filter_by(username=username).first()
+                if user and user.check_password(password):
+                    login_user(user)
+                    return redirect(url_for("main.profile"))
+                    
+                else:
+                    flash("Неверный логин или пароль","danger")
+            else:
+                return render_template("login.html", form=form)
 
-        return render_template("login.html",form=form)
+        else:
+
+            return render_template("login.html",form=form)
 
 @bp.route("/register",methods=["GET","POST"])
 def register():
@@ -45,7 +53,8 @@ def register():
             new_user.set_password(password)
             db.session.add(new_user)
             db.session.commit()
-            return render_template("success.html")
+            login_user(new_user)
+            return redirect(url_for("main.profile"))
         
         else:
             flash("Неверный логин или пароль","danger")
@@ -53,3 +62,10 @@ def register():
 
         
         return render_template("register.html",form=form)
+    
+
+@bp.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for("auth.login_or_profile"))
